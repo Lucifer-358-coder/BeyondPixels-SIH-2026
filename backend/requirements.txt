@@ -1,0 +1,12 @@
+Flask>=3.0,<4
+flask-cors>=4,<7
+Pillow>=11,<13
+pytesseract>=0.3.13,<1
+requests>=2.31,<3
+pytest>=8,<10
+
+# Experimental local classifier dependencies
+numpy>=1.26,<3
+scipy>=1.11,<2
+scikit-learn==1.8.0
+opencv-python>=4.10,<5
