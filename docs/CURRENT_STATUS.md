@@ -5,6 +5,7 @@ This reflects the **22 September active source capture**, the 21 September backe
 | Area | Observed | Open work |
 | --- | --- | --- |
 | UI and API | Flutter screens and Flask routes for two separate branches are present. | End-to-end Windows, Android and Web runs need verification; this source archive omits Flutter platform folders. |
+| Localhost website | No website implementation in this source capture; the build brief is documented. | Implement and verify the site against the existing API and PS traceability matrix. |
 | OCR | Tesseract path, labelled fields, MRZ extraction and date handling. | Document-class test matrix, field accuracy and degraded-image handling. |
 | Document rules | TD3 plus bounded TD1/TD2 consistency; passport printed-field comparison. | Issuer/status checks, broader document rules, false-alarm measurement. |
 | Tampering | Several diagnostic indicators and optional reference-image pixel comparison. | Held-out forgery evaluation, photo/text/stamp-specific detection. |
