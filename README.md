@@ -31,6 +31,10 @@ The separate AI Image Detection branch is extra research work. Its scores do not
 
 The source snapshot is from **22 September 2026**. The 25 September assessment is a source-based evaluation, not a verified live build. Machine-specific launcher, model weights, training images, identity documents, secrets, virtual environments and build binaries are intentionally excluded. A copied backend dependency list is from the 21 September package; revalidate it with the active machine before a release.
 
+## Planned localhost website
+
+The website is not implemented in this source snapshot. Build it against the existing Flask routes using the [website implementation brief](docs/WEBSITE_IMPLEMENTATION_BRIEF.md) and the [PS traceability matrix](docs/PS_TRACEABILITY.md). The site must lead with Document Verification, preserve AI Image Detection as a separate research branch, and show unverified or unavailable evidence honestly. A separate [judge-facing repository plan](docs/JUDGE_REPOSITORY_PLAN.md) describes a later reviewed demo snapshot; that repository does not exist yet.
+
 ## Quick start
 
 Use [docs/SETUP.md](docs/SETUP.md). In brief: install Python dependencies and Tesseract, set a fresh local demo token, start Flask on `127.0.0.1:8001`, generate missing Flutter platform scaffolding, then run Flutter from `frontend/`. The AI image and face model paths require separately licensed, verified local artifacts. Missing artifacts should be shown as unavailable, not silently represented as working.
