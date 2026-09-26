@@ -1,20 +1,49 @@
-# Verification plan
+# Verification Plan
 
-## Clean local run
+## End-to-End Local Run
 
-- Start Flask with a fresh local token; verify `/health` and `/v1/capabilities`.
-- Test both branches with good input, invalid format, oversize input and wrong/missing token.
-- Run Flutter Windows UI against this server; check error messages and unavailable-model cases.
-- Repeat on Android and Web only when their endpoints, builds and security behavior are configured and tested.
+- Start the Flask backend with a fresh local demo token.
+- Verify `/health` and `/v1/capabilities`.
+- Test Document Verification with valid, degraded, mismatched, and invalid inputs.
+- Test AI Image and Deepfake Detection with authentic photos, AI-generated images, and appropriate deepfake samples.
+- Verify clear behavior for missing models, invalid media, authentication errors, and backend failures.
+- Record only measured results from repeatable test runs.
 
-## Document matrix
+## Document Test Matrix
 
-Use synthetic or consented examples for passport, visa, national ID, driving licence and permit. For each class include clear, blurry, cropped, expired, field mismatch, photo edit and stamp edit examples as applicable. Keep a held-out set separate from development samples. Record actual field precision/recall, false positives, false negatives, abstentions and latency by class. Do not infer generalized accuracy from unit tests or tiny synthetic samples.
+Use fictional, synthetic, or consented samples covering document classes relevant to the project.
 
-## Media models
+Where applicable, include:
 
-Keep data source, license, sample counts, duplicate screening, train/validation/test splits and exact model hashes. Evaluate unseen generators, compression, resizing and real-photo false alarms for AI Image Detection. Evaluate face manipulation separately from face identity similarity. A demo video should show the exact application output, including inconclusive/unavailable states.
+- clear image
+- blur
+- crop
+- compression
+- expired date
+- field mismatch
+- altered photograph
+- text/date manipulation
+- stamp or region manipulation
 
-## Source snapshot caveat
+Track field accuracy, false positives, false negatives, abstentions, and latency.
 
-The captured repository does not ship models or most test fixtures. Python syntax compilation passed in the packaging environment on 25 September 2026. Pytest was unavailable there, so no test-suite pass is asserted. Validate on the team's actual machine before recording results here.
+## AI Image and Deepfake Evaluation
+
+For AI-image analysis, track:
+
+- dataset source and license
+- sample counts
+- train / validation / test separation
+- duplicate screening
+- model version / hash
+- real-photo false positives
+- unseen-generator performance
+- compression and resizing robustness
+
+For deepfake analysis, evaluate face manipulation separately from face identity similarity.
+
+## Reporting
+
+Do not copy illustrative percentages into the public project documentation.
+
+Accuracy, speed, or detection-rate claims should be added only after they have been measured on a documented test set.
