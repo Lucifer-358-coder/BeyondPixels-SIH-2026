@@ -1,6 +1,6 @@
 # BeyondPixels Demonstration
 
-The working demonstration is designed to show the complete flow from upload to explainable result.
+The current demonstration focuses on the core BeyondPixels processing workflow.
 
 ## Document Verification
 
@@ -22,12 +22,11 @@ A second degraded or intentionally altered sample can be used to demonstrate how
 4. When the deepfake model is available, use a suitable face image to demonstrate face-manipulation analysis.
 5. Keep AI-image and deepfake results separate and explain what each result means.
 
-## Interface Demonstration
+## Current Interface Status
 
-- **Operator Web Dashboard:** used for the main working localhost demonstration.
-- **Mobile UI:** used as a compact visual representation of the intended user experience.
+The Flutter mobile interface is the current prototype interface and visual representation.
 
-Design-only mobile screens should not be presented as measured backend output.
+Website development has **not started yet**. When the web interface is implemented, this document will be updated with the real workflow.
 
 ## Result Philosophy
 
