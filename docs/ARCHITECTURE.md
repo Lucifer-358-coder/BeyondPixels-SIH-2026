@@ -1,22 +1,59 @@
-# Architecture and scope
+# Architecture and Scope
 
 ```mermaid
 flowchart TB
-    UI[Flutter user interface] --> DV[Document Verification]
-    UI --> AI[AI Image Detection]
+    UI1[Operator Web Dashboard] --> API[BeyondPixels Backend / APIs]
+    UI2[Mobile UI Representation] --> API
+    API --> DV[Document Verification]
+    API --> AIDF[AI Image and Deepfake Detection]
     DV --> OCR[OCR and MRZ]
-    DV --> FR[Forensic and optional face checks]
-    OCR --> REV[Evidence report and human review]
-    FR --> REV
-    AI --> MEDIA[Experimental media observations]
+    DV --> DOC[Consistency / Tampering / Face Checks]
+    AIDF --> AI[AI Image Analysis]
+    AIDF --> DF[Deepfake / Face-Manipulation Analysis]
+    OCR --> REV[Explainable Result]
+    DOC --> REV
+    AI --> REV
+    DF --> REV
+    REV --> HUMAN[Authorized Human Reviewer]
 ```
 
-**Document Verification** maps to the PS's four modules: OCR Extraction, Document Validation (product label: Document Verification), Tampering Detection, and Face Verification. Actual `POST /v1/screen` results are observations and an `inconclusive` or `manual_review` status. Field/MRZ comparisons and optional face models run separately; they do not feed a single trained fraud classifier.
+## Document Verification
 
-**AI Image Detection** uses `POST /api/v1/detect/image`. The narrow whole-image classifier and optional visual/deepfake models provide research observations. The current document route explicitly does **not** run whole-image generation analysis and reports deepfake as `not_implemented` in that route. Reusing the media service for carefully scoped document-photo analysis is a future design option, not an implemented integration in this snapshot.
+Document Verification covers the document-focused workflow, including OCR extraction, MRZ processing, printed-field consistency, date checks, tampering indicators, and optional face comparison.
 
-`POST /v1/review` can record an operator's action in a local demo log. There is no authorized government database adapter, validated unified risk score or deployment identity decision. The architecture can later allow an officer-facing localhost website while retaining a Flutter visual prototype; the captured repository contains Flutter source, not that website.
+The individual checks remain separately explainable. They do not collapse into an unsupported single “fake document” classifier.
 
-## Data handling
+## AI Image and Deepfake Detection
 
-This is a local research demo. Only synthetic or consented images should be used. Keep credentials, model binaries, private IDs and biometric images outside Git. The local token is a demo gate, not a production authentication system. A private GitHub repository still exposes files to its collaborators.
+This is a separate media-analysis branch.
+
+The current backend exposes image-analysis services that can provide whole-image AI-generation observations and, when the relevant local model is available, deepfake / face-manipulation observations.
+
+This branch is intentionally separate from Document Verification because an AI-generated-image score is not equivalent to document-authenticity verification.
+
+## Human Review Layer
+
+BeyondPixels is designed to provide evidence to the reviewer.
+
+The reviewer should be able to see:
+
+- which checks completed
+- which checks were unavailable
+- what information was extracted
+- which inconsistencies were found
+- which forensic indicators contributed to the result
+- whether further manual review is recommended
+
+## Deployment Direction
+
+The current prototype runs locally.
+
+A future authorized deployment can place the processing layer on secure or on-premise infrastructure while allowing approved clients at checkpoints or government facilities to access it through controlled APIs.
+
+Protected government records should be accessed only through authorized integration services with authentication, authorization, logging, and appropriate data-handling controls.
+
+## Data Handling
+
+Only fictional, synthetic, or properly authorized samples should be used in demonstrations and testing.
+
+Credentials, production tokens, real identity records, private biometric data, restricted datasets, and protected endpoints must remain outside the public repository.
