@@ -1,22 +1,22 @@
-# PS 26188 traceability for product and website
+# PS 26188 Traceability
 
-This matrix keeps the site and future judge material tied to the user-provided PS. **Observed** means present in the 22 September source capture, not validated on today's Windows installation. **Planned** means a requirement or proposed implementation with no verified working result in this repository.
+This matrix keeps the BeyondPixels documentation and demonstrations tied to the problem statement. **Observed** means present in the available project source and prototype. **Planned** means a requirement or proposed implementation that is not yet verified as a working production feature.
 
-| PS problem or expected module | Website evidence to show | Source status | Completion evidence needed |
+| PS problem or expected module | BeyondPixels evidence | Current status | Completion evidence needed |
 | --- | --- | --- | --- |
-| Fake passports, visas and IDs | Document Verification intake and structured observations | Partial OCR/MRZ/rules observed; issuer authenticity not checked | Synthetic/consented cases per document class, exact rules and error rates |
-| OCR Extraction | Extracted labelled fields with source and uncertainty | Observed, uneven format coverage | Field accuracy on held-out clear and degraded samples |
-| Document Validation in PS | Product label **Document Verification**; MRZ, dates and printed-field consistency | Bounded TD3/TD1/TD2 and passport comparisons observed | Document-specific rule packs and issuer validation |
-| Tampering Detection | Show each image/field diagnostic and disputed region, when available | Indicators observed; no validated general forgery or stamp detector | Labelled photo, text/date and stamp edits; measured false alarms/misses |
-| Face Verification | Optional, consented document-versus-comparison-photo similarity | Model-dependent, uncalibrated observation | Paired-person evaluation, threshold, poor-quality abstention and spoof review |
-| Rules and database validation | Separate local rule result from record-lookup state | Local rules partial; authorized passport/visa/watchlist connector absent | Synthetic mock adapter for demo; authorized integration only in deployment |
-| Expired/blacklisted | Date finding, and a separate future record-status state | Some expiry checks; blacklist check absent | Expired cases and authorized/mock record responses |
-| Multiple identities | Request-scoped comparison with supplied reference images | Up to four opt-in references; no persistent identity search | Authorized identity data design and evaluation before claiming detection |
-| Risk score | Explanations and officer review; reserve clearly labelled future risk slot | `manual_review` / `inconclusive`; no calibrated unified score | Defined factors, thresholds, missing-evidence behavior and calibration |
-| Faster screening | Timed end-to-end demo from upload to report | No measured throughput | Repeatable latency table versus manual baseline |
-| Digital trail | Local operator action and report reference | Demo SQLite action log; no protected audit or roles | Access control, retention, tamper resistance and review export |
-| AI Image Detection | Separate research page, related to synthetic visual evidence | Separate endpoint with optional model dependencies | Licensed model/data provenance and held-out/unseen-generator results |
+| Fake passports, visas and IDs | Document Verification intake and structured observations | Partial OCR/MRZ/rules implemented; issuer authenticity is not checked | Synthetic/consented cases per document class, exact rules and measured error rates |
+| OCR Extraction | Extracted labelled fields with source and uncertainty | Implemented with uneven format coverage | Field accuracy on held-out clear and degraded samples |
+| Document Validation in PS | Product label **Document Verification**; MRZ, dates and printed-field consistency | Bounded TD3/TD1/TD2 and passport comparisons implemented | Document-specific rule packs and authorized issuer validation |
+| Tampering Detection | Image/field diagnostics and suspicious-region indicators where available | Indicators implemented; no claim of universal forgery or stamp detection | Labelled photo, text/date and stamp edits; measured false alarms/misses |
+| Face Verification | Optional, consented document-versus-comparison-photo similarity | Model-dependent similarity observation | Paired-person evaluation, calibrated threshold, poor-quality abstention and spoof review |
+| Rules and database validation | Local rule result separated from external record-lookup state | Local rules partial; protected government connectors are not available in the prototype | Synthetic/mock adapter for demonstration; authorized integration only in deployment |
+| Expired/blacklisted | Date finding and separate future record-status state | Some expiry checks implemented; blacklist lookup absent | Expired cases and authorized/mock record responses |
+| Multiple identities | Request-scoped comparison with supplied reference images | Limited opt-in reference comparison; no persistent identity search | Authorized identity-data design and evaluation before claiming detection |
+| Risk score | Explanations and human review rather than unsupported certainty | Manual-review / inconclusive paths used; no calibrated unified risk score | Defined factors, thresholds, missing-evidence behavior and calibration |
+| Faster screening | Timed end-to-end demonstration from upload to report | Performance measurement is still being expanded | Repeatable latency table against a defined baseline |
+| Digital trail | Local operator action and report reference | Prototype logging only; not a production audit system | Access control, retention, tamper resistance and review export |
+| AI Image and Deepfake Detection | Separate branch for AI-generated image screening and deepfake/face-manipulation analysis | Experimental model pipelines with local dependencies | Licensed model/data provenance and held-out/unseen-generator and deepfake evaluation |
 
-**Slide and website rule:** Lead with the document-screening PS; show the four PS modules, then mention the separate AI Image Detection branch as additional research. Do not present a synthetic image score as document validation or an uncalibrated similarity as verified identity. A human officer remains the decision-maker.
+**Presentation rule:** Lead with the document-screening problem statement and its verification modules, then present **AI Image and Deepfake Detection** as the second major BeyondPixels branch. Do not present an AI/deepfake score as proof of document authenticity or an uncalibrated face similarity score as verified identity. A human officer remains the decision-maker.
 
-**Supported input wording:** The PS lists passport, visa, national ID, driving licence and permit. The current generic image upload accepts JPEG/PNG, but specialized verification of every listed type is **not** demonstrated. Label document-type coverage per evaluated class, not per upload capability.
+**Supported input wording:** The problem statement covers passports, visas and identity/travel documents. Generic image upload does not by itself mean every document type has specialized verification. Coverage should be claimed only for document classes that have actually been evaluated.
