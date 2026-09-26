@@ -1,6 +1,6 @@
 # BeyondPixels
 
-**AI-Assisted Document Verification & AI Image Detection Platform**  
+**AI-Assisted Document Verification & AI Image and Deepfake Detection Platform**  
 **Smart India Hackathon 2026 — Problem Statement 26188**
 
 BeyondPixels is a research prototype for assisting identity and travel-document screening at border checkpoints and other authorized verification environments.
@@ -8,7 +8,7 @@ BeyondPixels is a research prototype for assisting identity and travel-document 
 The platform is organized into **two separate analysis branches**:
 
 1. **Document Verification**
-2. **AI Image Detection**
+2. **AI Image and Deepfake Detection**
 
 The system is designed as **decision support for a human reviewer**. It does not claim to independently certify document authenticity, establish identity, or make immigration/travel decisions.
 
@@ -22,7 +22,8 @@ Manual document screening can be difficult when reviewers face:
 - suspicious or inconsistent document data
 - forged or tampered regions
 - identity impersonation attempts
-- AI-generated or synthetically modified imagery
+- AI-generated imagery
+- deepfake or face-manipulated media
 - large verification volumes
 
 BeyondPixels brings multiple checks into one explainable workflow so an authorized reviewer can inspect evidence more efficiently.
@@ -46,18 +47,18 @@ Current and planned checks include:
 - structured evidence for manual review
 - future integration layer for authorized government databases/APIs
 
-### 2. AI Image Detection
+### 2. AI Image and Deepfake Detection
 
 A separate analysis branch for:
 
 - AI-generated image screening
 - learned visual-model analysis
 - forensic image signals
-- optional deepfake / face-manipulation analysis
+- deepfake / face-manipulation analysis
 - explainable indicators
 - inconclusive/manual-review handling
 
-AI-image results are treated as **forensic indicators**, not proof of document authenticity.
+AI-image and deepfake results are treated as **forensic indicators**, not proof of document authenticity.
 
 ---
 
@@ -80,14 +81,14 @@ Both interfaces are intended to connect to the same backend architecture.
                          |
               Common Backend / APIs
                          |
-        +----------------+----------------+
-        |                                 |
-Document Verification            AI Image Detection
-        |                                 |
+        +----------------+----------------------+
+        |                                       |
+Document Verification            AI Image and Deepfake Detection
+        |                                       |
  OCR / MRZ / Face /              AI-image / Deepfake /
  Consistency / Tampering         Forensic Signals / XAI
-        |                                 |
-        +----------------+----------------+
+        |                                       |
+        +----------------+----------------------+
                          |
                  Explainable Result
                          |
@@ -119,6 +120,7 @@ Current project components include:
 - **Backend:** Python, Flask
 - **Document processing:** OCR, MRZ parsing, rules/consistency checks
 - **Image analysis:** classical forensic features + learned visual models
+- **Deepfake analysis:** face-level manipulation screening using local research models where available
 - **Face analysis:** optional local face-detection / similarity models
 - **Frontend:** Flutter mobile prototype + planned/local web operator dashboard
 - **Model execution:** ONNX / Python model pipelines where applicable
@@ -139,7 +141,7 @@ The demo is designed to show:
 5. show a clear result such as pass / suspicious / manual review / unavailable
 6. allow the human reviewer to make the final decision
 
-A typical judge demo uses controlled test samples rather than real identity documents.
+A typical demo uses controlled test samples rather than real identity documents.
 
 ---
 
@@ -170,7 +172,7 @@ See:
 - [Demo Guide](docs/DEMO.md)
 - [Model & Data Notes](docs/MODEL_DATA.md)
 - [Website Implementation Brief](docs/WEBSITE_IMPLEMENTATION_BRIEF.md)
-- [Judge Overview](docs/JUDGES_OVERVIEW.md)
+- [BeyondPixels Overview](docs/BEYONDPIXELS.md)
 - [Changelog](CHANGELOG.md)
 
 ---
@@ -180,4 +182,4 @@ See:
 **Project:** BeyondPixels  
 **SIH 2026 Problem Statement:** 26188
 
-This repository is maintained as a technical record of the project's progress and as a judge-friendly overview of the solution.
+This repository is maintained as a technical record of the project's progress and as a clear public overview of the solution.
