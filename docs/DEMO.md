@@ -1,11 +1,44 @@
-# Judge demo runbook
+# BeyondPixels Demonstration
 
-1. Prepare **fictional/synthetic or consented** samples: a readable passport-like example, a mismatched or expired example, a blurred example, and a media sample. Label simulated documents clearly.
-2. Start the backend, check `/health` and `/v1/capabilities`, and start the Flutter Windows UI. Verify the local demo token on both branches.
-3. Lead with **Document Verification**: upload the readable sample; show extracted fields, MRZ/date checks and evidence report. Explain which checks actually ran.
-4. Upload the mismatch/expiry sample; show the exact inconsistency and manual-review reason. Upload the blurred sample; show uncertainty rather than a genuine/fake verdict.
-5. If local face models and a consented comparison photo are available, show the optional similarity observation. State its limitations.
-6. Show **AI Image Detection** separately. Only claim a model result if the relevant model is present and the analysis actually completed. Deepfake is experimental and distinct from face verification.
-7. Explain what remains: authorized-record checks, validated risk score, document-specific tamper tests, broader formats, clean-machine and platform testing.
+The working demonstration is designed to show the complete flow from upload to explainable result.
 
-Record actual timings and test metrics before putting numbers in a slide or video. The UI is a prototype visual representation; any future localhost website should be described as such until built and tested. Do not present fabricated screenshots as real output.
+## Document Verification
+
+1. Upload a fictional, synthetic, or otherwise authorized document sample.
+2. Run OCR and MRZ extraction where applicable.
+3. Show printed-field and MRZ consistency observations.
+4. Display date / expiry checks.
+5. Show available tampering and forensic-image indicators.
+6. If the required local face model and consented comparison image are available, show face-similarity observations.
+7. Present the final evidence summary and any manual-review reason.
+
+A second degraded or intentionally altered sample can be used to demonstrate how the system handles inconsistency or uncertainty.
+
+## AI Image and Deepfake Detection
+
+1. Upload a normal photographic image.
+2. Run AI-image analysis and show the available forensic / learned-model indicators.
+3. Upload an AI-generated test image and show the corresponding analysis.
+4. When the deepfake model is available, use a suitable face image to demonstrate face-manipulation analysis.
+5. Keep AI-image and deepfake results separate and explain what each result means.
+
+## Interface Demonstration
+
+- **Operator Web Dashboard:** used for the main working localhost demonstration.
+- **Mobile UI:** used as a compact visual representation of the intended user experience.
+
+Design-only mobile screens should not be presented as measured backend output.
+
+## Result Philosophy
+
+BeyondPixels should not force uncertain evidence into an absolute verdict.
+
+Depending on the evidence, the interface can communicate states such as:
+
+- checks completed
+- suspicious indicators found
+- manual review required
+- inconclusive
+- unavailable
+
+The authorized human reviewer remains responsible for the final decision.
