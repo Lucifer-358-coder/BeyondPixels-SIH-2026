@@ -2,8 +2,7 @@
 
 ```mermaid
 flowchart TB
-    UI1[Operator Web Dashboard] --> API[BeyondPixels Backend / APIs]
-    UI2[Mobile UI Representation] --> API
+    UI[Client Interface] --> API[BeyondPixels Backend / APIs]
     API --> DV[Document Verification]
     API --> AIDF[AI Image and Deepfake Detection]
     DV --> OCR[OCR and MRZ]
@@ -27,15 +26,13 @@ The individual checks remain separately explainable. They do not collapse into a
 
 This is a separate media-analysis branch.
 
-The current backend exposes image-analysis services that can provide whole-image AI-generation observations and, when the relevant local model is available, deepfake / face-manipulation observations.
+The backend can provide whole-image AI-generation observations and, when the relevant local model is available, deepfake / face-manipulation observations.
 
 This branch is intentionally separate from Document Verification because an AI-generated-image score is not equivalent to document-authenticity verification.
 
 ## Human Review Layer
 
-BeyondPixels is designed to provide evidence to the reviewer.
-
-The reviewer should be able to see:
+BeyondPixels is designed to provide evidence to the reviewer, including:
 
 - which checks completed
 - which checks were unavailable
@@ -44,9 +41,13 @@ The reviewer should be able to see:
 - which forensic indicators contributed to the result
 - whether further manual review is recommended
 
-## Deployment Direction
+## Current Interface Status
 
-The current prototype runs locally.
+The Flutter mobile interface is the current prototype interface.
+
+Website development has **not started yet**. A web/operator interface may be added later without changing the core backend architecture.
+
+## Deployment Direction
 
 A future authorized deployment can place the processing layer on secure or on-premise infrastructure while allowing approved clients at checkpoints or government facilities to access it through controlled APIs.
 
