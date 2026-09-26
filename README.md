@@ -1,46 +1,184 @@
 # BeyondPixels
 
-**Research prototype for SIH 2026 problem statement 26188: identity and travel document screening at border checkpoints.**
+**AI-Assisted Document Verification & AI Image and Deepfake Detection Platform**  
+**Smart India Hackathon 2026 — Problem Statement 26188**
 
-BeyondPixels has two user-facing branches:
+BeyondPixels is an identity and document screening platform being developed for border checkpoints, airports, transport hubs, and other authorized verification environments.
 
-1. **Document Verification**: OCR, MRZ and printed-field checks, limited image-forensic observations, optional face comparison, and an evidence report for officer review. The PS calls its corresponding module *Document Validation*.
-2. **AI Image Detection**: separate experimental screening for whole-image generation, with optional face-manipulation analysis when the local research model is installed.
+The platform is organized into **two separate core modules**:
 
-The goal is decision support for a human reviewer. Current output cannot certify document authenticity, establish a person's identity, or authorize/refuse travel. See [current status](docs/CURRENT_STATUS.md) before presenting capabilities.
+1. **Document Verification**
+2. **AI Image and Deepfake Detection**
 
-## Problem statement mapping
+BeyondPixels is designed as a **decision-support system**. It analyzes evidence, highlights inconsistencies or suspicious indicators, and supports manual review. The final decision remains with the authorized human officer.
 
-| PS requirement | Present source and limitation |
-| --- | --- |
-| OCR Extraction | Tesseract-based OCR and some labelled fields; real multi-format and degraded-capture coverage is unmeasured. |
-| Document Validation | **Document Verification** performs TD3 passport and bounded TD1/TD2 MRZ checks, date and limited printed-field comparisons. No issuer confirmation. |
-| Tampering Detection | Field discrepancies, image artifacts, copy-move candidates and optional aligned reference comparison are review indicators. No validated general forgery or visa-stamp classifier. |
-| Face Verification | Optional document-photo versus supplied comparison-photo embedding similarity if local models are installed. No calibrated identity verdict or live capture. |
-| Rules and databases | Some local rules exist. There is no authorized passport, visa, watchlist or blacklist connector in this snapshot. |
-| Risk score and review trail | Evidence statuses and optional local operator-action log exist. No calibrated unified risk score or production audit trail. |
+---
 
-The separate AI Image Detection branch is extra research work. Its scores do not prove whether a document is genuine.
+## Problem We Address
 
-## Repository contents
+Modern identity and travel-document screening may involve:
 
-- `backend/`: Flask API, OCR/document checks, experimental media analysis, tests and research scripts.
-- `frontend/`: Flutter source and unit tests. The captured source lacks generated platform folders; see setup.
-- `docs/`: architecture, setup, API, model/data provenance, demo, status and roadmap.
-- `CONTRIBUTING.md`: team workflow and review rules.
+- altered or forged passports, visas, and identity documents
+- modified dates or personal information
+- manipulated document photographs
+- identity impersonation
+- inconsistent printed and machine-readable information
+- AI-generated images
+- deepfake or face-manipulated media
+- high document volumes that increase manual review time
 
-The source snapshot is from **22 September 2026**. The 25 September assessment is a source-based evaluation, not a verified live build. Machine-specific launcher, model weights, training images, identity documents, secrets, virtual environments and build binaries are intentionally excluded. A copied backend dependency list is from the 21 September package; revalidate it with the active machine before a release.
+BeyondPixels brings multiple checks into one explainable workflow so reviewers can understand **what was checked, what was found, and what requires attention**.
 
-## Planned localhost website
+---
 
-The website is not implemented in this source snapshot. Build it against the existing Flask routes using the [website implementation brief](docs/WEBSITE_IMPLEMENTATION_BRIEF.md) and the [PS traceability matrix](docs/PS_TRACEABILITY.md). The site must lead with Document Verification, preserve AI Image Detection as a separate research branch, and show unverified or unavailable evidence honestly. A separate [judge-facing repository plan](docs/JUDGE_REPOSITORY_PLAN.md) describes a later reviewed demo snapshot; that repository does not exist yet.
+## Core Modules
 
-## Quick start
+### 1. Document Verification
 
-Use [docs/SETUP.md](docs/SETUP.md). In brief: install Python dependencies and Tesseract, set a fresh local demo token, start Flask on `127.0.0.1:8001`, generate missing Flutter platform scaffolding, then run Flutter from `frontend/`. The AI image and face model paths require separately licensed, verified local artifacts. Missing artifacts should be shown as unavailable, not silently represented as working.
+The Document Verification workflow focuses on document-specific evidence:
 
-## Working agreement
+- OCR-based text extraction
+- MRZ parsing and validation
+- printed-field and MRZ consistency checks
+- date and expiry checks
+- metadata/provenance observations
+- tampering indicators
+- copy-move and visual-anomaly analysis
+- optional face verification
+- structured evidence for manual review
 
-For a new team member, start with [architecture](docs/ARCHITECTURE.md), [current status](docs/CURRENT_STATUS.md), and [demo guide](docs/DEMO.md). Develop on a branch, use a pull request into `main`, and attach test evidence. Do not upload real identity records or tokens even to this private repository.
+The system does not force every case into a simple real/fake answer. Depending on the available evidence, the result can indicate that checks passed, suspicious evidence was found, the analysis is inconclusive, or manual review is required.
 
-**License:** No project-wide reuse license is granted yet. Review third-party datasets, checkpoints and code separately before distribution or deployment.
+### 2. AI Image and Deepfake Detection
+
+This is a separate analysis workflow for synthetic and manipulated visual media.
+
+It can include:
+
+- AI-generated image screening
+- learned visual-model analysis
+- frequency, noise, texture, and compression indicators
+- deepfake / face-manipulation analysis
+- explainable forensic observations
+- inconclusive or unavailable states when evidence is insufficient
+
+AI-image or deepfake scores are treated as **forensic indicators**, not proof that an identity document is genuine or fraudulent.
+
+---
+
+## Interface Strategy
+
+BeyondPixels uses a common backend so different interfaces can access the same verification and detection services.
+
+### Operator Web Dashboard
+A localhost web dashboard is being developed as the main operator-facing interface for live demonstration and larger-screen analysis.
+
+### Mobile UI Representation
+A mobile interface is retained as a compact visual representation of the intended user experience and workflow for presentation purposes.
+
+The processing logic remains in the common backend rather than being duplicated separately inside each interface.
+
+---
+
+## High-Level Architecture
+
+```text
+                     BEYONDPIXELS
+                          |
+                 Common Backend / APIs
+                          |
+        +-----------------+----------------------+
+        |                                        |
+Document Verification            AI Image and Deepfake Detection
+        |                                        |
+ OCR / MRZ / Face /              AI Image / Deepfake /
+ Consistency / Tampering         Forensic Signals / XAI
+        |                                        |
+        +-----------------+----------------------+
+                          |
+                  Explainable Result
+                          |
+                   Human Reviewer
+```
+
+---
+
+## Current Prototype
+
+Current development includes:
+
+- Python / Flask backend
+- OCR and MRZ-oriented document checks
+- document consistency rules
+- tampering and forensic-image indicators
+- optional face comparison
+- AI-generated image detection research pipeline
+- deepfake / face-manipulation research pipeline
+- explainable result handling
+- Flutter mobile interface prototype
+- localhost operator-dashboard development
+
+Large model weights, private datasets, credentials, real identity documents, and machine-specific environments are intentionally not committed to the public repository.
+
+---
+
+## Technology Overview
+
+- **Backend:** Python, Flask
+- **Document Processing:** OCR, MRZ parsing, consistency/rule checks
+- **Computer Vision:** image forensics, face analysis, tampering indicators
+- **AI/ML:** AI-image and deepfake detection models
+- **Model Execution:** Python and ONNX-based pipelines where applicable
+- **Frontend:** Flutter mobile prototype and localhost web operator dashboard
+- **Explainability:** per-check observations and review-oriented output
+
+---
+
+## Data Privacy and Responsible Use
+
+BeyondPixels is intended to be demonstrated using fictional, synthetic, or appropriately authorized samples.
+
+The public repository should not contain:
+
+- real identity documents
+- private biometric datasets
+- API tokens or credentials
+- protected government endpoints
+- confidential records
+- restricted model files that cannot legally be redistributed
+
+When evidence is incomplete, the system should report **inconclusive**, **unavailable**, or **manual review required** instead of pretending that a check succeeded.
+
+---
+
+## Future Deployment Direction
+
+The current prototype runs locally.
+
+A future authorized deployment could place the BeyondPixels processing layer inside secure or on-premise infrastructure and connect it to approved government services through controlled APIs or integration layers.
+
+Possible future integrations may include authorized passport, visa, identity, blacklist, watchlist, or immigration-record services. The current prototype does **not** claim access to those protected systems.
+
+---
+
+## Documentation
+
+- [BeyondPixels Overview](docs/BEYONDPIXELS.md)
+- [Problem Statement Mapping](docs/PROBLEM_STATEMENT.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Current Status](docs/CURRENT_STATUS.md)
+- [API Contract](docs/API.md)
+- [PS Traceability](docs/PS_TRACEABILITY.md)
+- [Model & Data Notes](docs/MODEL_DATA.md)
+- [Verification Plan](docs/TEST_PLAN.md)
+- [Demonstration Flow](docs/DEMO.md)
+- [Operator Dashboard Implementation](docs/WEBSITE_IMPLEMENTATION_BRIEF.md)
+- [Development Changelog](CHANGELOG.md)
+
+---
+
+## Project
+
+**Name:** BeyondPixels  
+**SIH 2026 Problem Statement:** 26188  
+**Primary Modules:** Document Verification + AI Image and Deepfake Detection
