@@ -44,6 +44,4 @@ For deepfake analysis, evaluate face manipulation separately from face identity 
 
 ## Reporting
 
-Do not copy illustrative percentages into the public project documentation.
-
 Accuracy, speed, or detection-rate claims should be added only after they have been measured on a documented test set.
