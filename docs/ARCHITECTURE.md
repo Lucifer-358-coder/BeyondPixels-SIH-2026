@@ -20,15 +20,13 @@ flowchart TB
 
 Document Verification covers the document-focused workflow, including OCR extraction, MRZ processing, printed-field consistency, date checks, tampering indicators, and optional face comparison.
 
-The individual checks remain separately explainable. They do not collapse into an unsupported single “fake document” classifier.
+Each check remains separately explainable so the reviewer can understand what evidence contributed to the result.
 
 ## AI Image and Deepfake Detection
 
-This is a separate media-analysis branch.
+This is a separate media-analysis branch for AI-generated images and face/deepfake manipulation.
 
-The backend can provide whole-image AI-generation observations and, when the relevant local model is available, deepfake / face-manipulation observations.
-
-This branch is intentionally separate from Document Verification because an AI-generated-image score is not equivalent to document-authenticity verification.
+The branch is intentionally separate from Document Verification because an AI-generated-image score is not equivalent to document-authenticity verification.
 
 ## Human Review Layer
 
@@ -41,11 +39,9 @@ BeyondPixels is designed to provide evidence to the reviewer, including:
 - which forensic indicators contributed to the result
 - whether further manual review is recommended
 
-## Current Interface Status
+## Interface Layer
 
-The Flutter mobile interface is the current prototype interface.
-
-Website development has **not started yet**. A web/operator interface may be added later without changing the core backend architecture.
+The current prototype includes a Flutter mobile interface connected to the common backend architecture. Additional interfaces can be added later without duplicating the core verification and detection logic.
 
 ## Deployment Direction
 
