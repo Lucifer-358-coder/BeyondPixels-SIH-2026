@@ -93,6 +93,16 @@ Current development includes:
 - explainable result handling
 - Flutter mobile interface prototype
 
+## Website Development Updates
+
+Website progress will be recorded here **date-wise** as development moves forward. Only implemented or verified changes will be added.
+
+| Date | Status | Update |
+| --- | --- | --- |
+| 27 September 2026 | Planned | Public evaluator-facing repository prepared. Website development has not started yet. |
+
+For detailed website progress, see [Website Updates](docs/WEBSITE_UPDATES.md).
+
 ## Technology Overview
 
 - **Backend:** Python, Flask
