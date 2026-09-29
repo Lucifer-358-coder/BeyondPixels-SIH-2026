@@ -92,16 +92,36 @@ Current development includes:
 - deepfake / face-manipulation pipeline
 - explainable result handling
 - Flutter mobile interface prototype
+- **public Next.js website foundation**
 
 ## Website Development Updates
 
-Website progress will be recorded here **date-wise** as development moves forward. Only implemented or verified changes will be added.
+The public repository now also shows **how the website is being built**, not only finished changes.
 
-| Date | Status | Update |
+| Date & Time | Status | Update |
 | --- | --- | --- |
-| 27 September 2026 | Planned | Public evaluator-facing repository prepared. Website development has not started yet. |
+| 29 September 2026, 11:58 PM IST | **Implemented / Build Verified** | Day 1 website foundation completed: AI Cybersecurity SaaS direction frozen, operator-first UX defined, Next.js/React/Tailwind frontend created, landing page implemented, and production build verified through GitHub Actions. |
+| 27 September 2026 | Planned | Public evaluator-facing repository prepared. Website development had not started yet. |
 
-For detailed website progress, see [Website Updates](docs/WEBSITE_UPDATES.md).
+For detailed website progress, see [Website Updates](docs/WEBSITE_UPDATES.md).  
+For the current Day 1 build record, see [Website Day 1 Build](docs/WEBSITE_DAY_1_BUILD.md).  
+The source is available under [website/](website/).
+
+## Website UI Direction
+
+**Frozen direction:** AI Cybersecurity SaaS Website
+
+The website is intentionally designed to avoid:
+
+- conventional government-portal styling
+- generic corporate/admin dashboard styling
+- overloaded hacker/gaming visuals
+
+The operator experience follows:
+
+**Upload → Analyze → Result → Evidence → Human Review**
+
+Complex backend processing remains hidden by default while actionable results and explainable evidence remain visible.
 
 ## Technology Overview
 
@@ -110,7 +130,9 @@ For detailed website progress, see [Website Updates](docs/WEBSITE_UPDATES.md).
 - **Computer Vision:** image forensics, face analysis, tampering indicators
 - **AI/ML:** AI-image and deepfake detection models
 - **Model Execution:** Python and ONNX-based pipelines where applicable
-- **Frontend:** Flutter mobile prototype
+- **Mobile Frontend:** Flutter prototype
+- **Web Frontend:** Next.js, React, TypeScript, Tailwind CSS
+- **Website CI:** GitHub Actions production-build verification
 - **Explainability:** per-check observations and review-oriented outputs
 
 ## Responsible Use and Privacy
@@ -129,7 +151,7 @@ Possible future integrations may include authorized passport, visa, identity, bl
 
 ## Repository Purpose
 
-This repository provides the public technical overview of BeyondPixels for SIH 2026, including the project scope, architecture, status, testing approach, and supporting documentation.
+This repository provides the public technical overview and visible development history of BeyondPixels for SIH 2026, including the project scope, architecture, website build progress, status, testing approach, and supporting documentation.
 
 ## Project
 
