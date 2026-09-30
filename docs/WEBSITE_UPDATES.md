@@ -4,6 +4,44 @@ This file tracks the website development of BeyondPixels in chronological order.
 
 Only **implemented, tested, or clearly verified** work should be added here. Planned ideas should be marked as planned and must not be presented as completed functionality.
 
+## 1 October 2026 — 1:17 AM IST
+
+**Status:** Day 2 Started / UI Build Verified
+
+### What we worked on
+
+- Created a reusable product-workspace component for the two BeyondPixels analysis flows.
+- Added a dedicated **Document Verification** route.
+- Added a dedicated **AI Image and Deepfake Detection** route.
+- Added real browser-side file selection for each workflow.
+- Added selected-file metadata display and file removal controls.
+- Added workflow-specific capability maps so evaluators can see which checks belong to each analysis path.
+- Added analysis-readiness state that clearly distinguishes selected evidence from backend availability.
+- Added reviewer evidence shells for the result layer.
+- Added an expandable **Expert / Judge view** for planned technical detail.
+- Linked both workflow screens from the public homepage.
+- Updated the homepage build-status area for Day 2.
+
+### Accuracy / evaluator safeguards
+
+- The **Analyze with BeyondPixels** action remains intentionally disabled until the real Flask API is connected and verified.
+- The interface explicitly states that selected files remain browser-side at this stage.
+- No fabricated backend result, confidence score, progress percentage, or model output is shown.
+- Backend/API integration is still marked as pending.
+
+### Verification
+
+- GitHub Actions workflow: **Website Build Verification**
+- Latest Day 2 workspace build: **SUCCESS**
+- Next.js production build: **SUCCESS**
+- New workflow routes compiled successfully.
+
+### Current Day 2 state
+
+Day 2 is **in progress**. The interactive frontend workspace exists and is build-verified, but real Flask API integration and live result mapping are not yet complete.
+
+---
+
 ## 30 September 2026 — 12:38 AM IST
 
 **Status:** Day 1 Officially Complete / Local + CI Verified
