@@ -408,3 +408,99 @@ a { color: inherit; text-decoration: none; }
   .selected-file button { grid-column:2; justify-self:start; padding:0; }
   .workspace-footer { flex-direction:column; }
 }
+
+
+/* Day 2 live backend wiring */
+.session-field {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0 8px;
+}
+.session-field > span {
+  color: #cbd5e1;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+.session-field input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, .72);
+  color: var(--text);
+  padding: 11px 12px;
+  outline: none;
+}
+.session-field input:focus {
+  border-color: var(--border-bright);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, .06);
+}
+.session-field small {
+  color: #64748b;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.secondary-action {
+  width: 100%;
+  margin-top: 16px;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: rgba(148, 163, 184, .04);
+  color: #cbd5e1;
+  cursor: pointer;
+}
+.secondary-action:hover:not(:disabled) {
+  border-color: var(--border-bright);
+  background: rgba(56, 189, 248, .05);
+}
+.secondary-action:disabled { cursor: wait; opacity: .65; }
+.analyze-button.live:not(:disabled) {
+  cursor: pointer;
+  color: #03111b;
+  border-color: rgba(56,189,248,.42);
+  background: linear-gradient(135deg, rgba(56,189,248,.95), rgba(59,130,246,.88));
+}
+.analyze-button.live:not(:disabled):hover { transform: translateY(-1px); }
+.button-note code {
+  color: #cfefff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.result-panel { overflow: hidden; }
+.result-success { color: var(--success); }
+.result-error { color: var(--risk); }
+.result-message {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid rgba(251, 113, 133, .18);
+  border-radius: 12px;
+  color: #fecdd3;
+  background: rgba(251, 113, 133, .05);
+  line-height: 1.6;
+}
+.result-grid {
+  display: grid;
+  gap: 12px;
+}
+.result-item {
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: rgba(2, 6, 23, .45);
+  overflow: hidden;
+}
+.result-item > span {
+  display: block;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: #9fb0c5;
+  font-size: 9px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.result-item pre {
+  margin: 0;
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #d8e4f0;
+  font: 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
