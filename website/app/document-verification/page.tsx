@@ -40,8 +40,8 @@ export default function DocumentVerificationPage() {
       workflowLabel="01 / Identity integrity"
       title="Document Verification"
       description="Screen passports, visas and supported identity-document evidence through a focused reviewer workspace. Backend checks stay underneath; evidence and review actions stay visible."
-      acceptedFormats="image/png,image/jpeg,image/webp,application/pdf"
-      inputHint="PNG, JPG, WEBP or PDF · use synthetic, fictional or authorized samples"
+      acceptedFormats="image/png,image/jpeg,image/webp"
+      inputHint="PNG, JPG or WEBP · use synthetic, fictional or authorized samples"
       checks={checks}
       evidence={evidence}
       accent="document"
