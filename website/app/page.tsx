@@ -5,6 +5,7 @@ const workflows = [
     description:
       "Review OCR, MRZ, consistency, validity, tampering, provenance and supported face-verification evidence without exposing backend complexity.",
     checks: ["OCR & MRZ", "Tampering", "Face verification"],
+    href: "/document-verification",
   },
   {
     eyebrow: "02 / Media authenticity",
@@ -12,6 +13,7 @@ const workflows = [
     description:
       "Separate whole-image AI-generation analysis from face/deepfake manipulation signals and present only actionable evidence to the reviewer.",
     checks: ["AI-image analysis", "Deepfake analysis", "Explainable evidence"],
+    href: "/ai-image-deepfake",
   },
 ];
 
@@ -95,14 +97,14 @@ export default function Home() {
             <article className="workflow-card" key={workflow.title}>
               <div className="card-topline">
                 <span>{workflow.eyebrow}</span>
-                <span className="status-dot">DESIGNED</span>
+                <span className="status-dot">DAY 2 ACTIVE</span>
               </div>
               <h3>{workflow.title}</h3>
               <p>{workflow.description}</p>
               <div className="check-row">
                 {workflow.checks.map((check) => <span key={check}>{check}</span>)}
               </div>
-              <span className="card-link">Interactive workflow screen is next</span>
+              <a className="card-link" href={workflow.href}>Open workflow →</a>
             </article>
           ))}
         </div>
@@ -135,14 +137,15 @@ export default function Home() {
       <section className="progress shell section" id="progress">
         <div className="progress-panel">
           <div>
-            <p className="kicker">Build status / Day 1</p>
-            <h2>Website foundation in progress.</h2>
+            <p className="kicker">Build status / Day 2</p>
+            <h2>Interactive product workspace is underway.</h2>
           </div>
           <div className="progress-list">
-            <span><b>✓</b> AI Cybersecurity SaaS direction frozen</span>
-            <span><b>✓</b> Operator information hierarchy defined</span>
-            <span><b>✓</b> Two core workflows separated</span>
-            <span><b>•</b> Interactive product screens next</span>
+            <span><b>✓</b> Day 1 foundation locally and CI verified</span>
+            <span><b>✓</b> Document Verification route created</span>
+            <span><b>✓</b> AI Image and Deepfake Detection route created</span>
+            <span><b>✓</b> Local file-selection and evidence shells added</span>
+            <span><b>•</b> Real Flask API integration remains pending</span>
           </div>
         </div>
       </section>
